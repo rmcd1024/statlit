@@ -1,0 +1,10 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+[![Build Status](https://travis-ci.org/jennybc/googlesheets.svg?branch=master)](https://travis-ci.org/rmcd1024/statlit)
+
+This repository will contain documents related to literate statistical
+analysis, including sample documents and presentations.

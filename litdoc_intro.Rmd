@@ -1,12 +1,19 @@
 ---
-title: 'Statistically Literate Documents: I'
+title: 'Statistically Literate Documents: Introduction'
 author: "Robert McDonald"
-date: "March 17, 2016"
+date: "March 26, 2016"
 output: 
     ioslides_presentation:
         incremental: true
         transition: faster
+#output:
+#    html_document:
+#        toc: true
+#        toc_float: true
 ---
+
+<!-- 
+--->
 
 ```{r setup, include=FALSE}
 library(knitr)
@@ -16,27 +23,43 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## License
 
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Statistically-Literate Documents: Introduction</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Robert L McDonald</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/rmcd1024/statlit" rel="dct:source">https://github.com/rmcd1024/statlit</a>.
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Statistically-Literate Documents: I</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Robert L McDonald</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+<p><p>
 
+The [source code for this document](https://github.com/rmcd1024/statlit/blob/master/litdoc_intro.Rmd) is available on github
 
+## Reproducibility
 
+* The research paradigm presumes honesty and verifiability
+* Nevertheless there is a "reproducibility crisis"
+* Research must withstand scrutiny
+    * Data should be made available (if possible)
+    * All transformations, omissions, modifications, calculations, etc. should be clearly documented
+    * Citations should be complete and accurate
+* How would your respond to a scholarly request for details about your work?
+* How would you respond to a fraud allegation?   
 
-## Introduction
+## Reproducibility is a Habit
 
-* "Literate" statistical documents contain both code and text in a single file.
+* Reproducible research is a _process_, reinforced by work habits
+* You want a workflow that is self-documenting and tools that support this
+* It is helpful to use research tools that 
+    * make it easy for you to retrace your steps
+    * make it easy to share your work process with others
+    * are robust (e.g. files should still be readable a decade later)
+    
+## Goals of this Talk
 
-    * Systems for processing literate documents typically have "web" in the name: "web", "cweb", "noweb", etc.
+* Stress the importance of reproducibility
+* Provide an example of reproducibility (these slides)
+* Provide a roadmap through a particular set of tools
+* Put in a plug (implicit) for those tools
+* The important thing is for you to use tools that 
+    * you and coauthors are comfortable with
+    * that support reproducibility
 
-    * "Weaving" is the process of creating the human-readable document
-
-    * "Tangling" is the process of creating the compiler-readable document
-
-* A literate document is by definition reproducible --- it can contain a complete record, including documentation, of all steps from the processing of raw data to publication.
-
-* Literate systems can provide output to html, pdf, docx, etc.
-  
-## The Idea of "Literacy"  
+## Code and Statistical "Literacy"  
 
 * The basic idea of literate documents was developed in the early 1980's by [Donald Knuth](http://www-cs-faculty.stanford.edu/~uno/) in the context of writing and documenting computer programs
 * The resurgence of interest has been accompanied by several developments:
@@ -44,7 +67,21 @@ knitr::opts_chunk$set(echo = FALSE)
     * [Pandoc](http://pandoc.org/), a document conversion toolkit
     * [Git](https://git-scm.com/), a version control system which makes obvious the benefits of using simple text files
     * The rise of Linux, open source, and cloud-based collaboration
-    * The reproducibility crisis
+
+
+## "Literate" Documents
+
+* "Literate" statistical documents contain both code and text in a single file. 
+
+    * Systems for processing literate documents typically have "web" in the name: "web", "cweb", "noweb", etc.
+
+    * "Weaving" is the process of creating the human-readable document
+
+    * "Tangling" is the process of creating the compiler-readable document
+
+* A literate document can contain a complete record of all steps from the processing of raw data to publication.
+    * A literate document is by definition "reproducible"
+
   
 ## Creating Literate Documents
 
@@ -53,19 +90,33 @@ knitr::opts_chunk$set(echo = FALSE)
     * LaTeX and R (with the knitr package). 
 * A markdown document is a simple, readable text file that can be processed to yield nicely formatted output
     * These slides are written in Rmarkdown
-* Pandoc is a document conversion toolkit
-* I will demonstrate markdown this week and LaTeX/R/knitr next week
-    * The main ideas are the same when using LaTeX and markdown. The syntax is slightly different
-    
+* Pandoc is a document conversion tool permitting conversion among markdown, HTML, pdf, docx, latex, etc.
+* I will demonstrate markdown $\to$ HTML in this talk 
+    * The main ideas are the same when using LaTeX and markdown. The chunk  syntax is slightly different and of course LaTeX $\ne$ markdown
+
+  
+
+## Tools for Creating Literate Documents
+
+* I will be using R with RStudio in my examples
+* You need not use RStudio; you can use _any_ text editor --- Vim, Emacs, Sublime Text, TextMate, Notepad++, etc.
+    * It is worthwhile to become an expert user of a capable text editor
+    * The best tools are editor-agnostic
+* You can use  programming languages other than R
+    * I will present a python example later
+* You will be much better off if you are comfortable at the command line
+    * It is a tool for a professional writer/researcher
+    * If you don't know how to use the command line, learn!
+
+
 ## Markdown Example
 
 
-These are the first few lines of the previous slide:
+These are the first few lines of an earlier slide:
 
 ```
 ## Creating Literate Documents
 
-* There are many ways to create literate documents
 * Two common paths:
     * [Markdown](https://daringfireball.net/projects/markdown/) plus [Pandoc](http://pandoc.org/)
     * LaTeX and R (with the knitr package). 
@@ -77,22 +128,39 @@ These are the first few lines of the previous slide:
 * Use `*` and indents to create bullet lists 
 * Use `[]()` to create hyperlinks 
  
- 
-## R
+    
+## R {.tabset}
 
 Existing literate systems can accommodate a wide variety of programming and statistical languages; my examples will use R
+
+<!--
+### Advantages
+-->
 
 * R is free, open source, and extraordinarily capable
 * There is much development around R with regard to literate documents (e.g., see [RMarkdown](http://rmarkdown.rstudio.com/))
 * RStudio is a natural frontend because it incorporates Pandoc and its developers created Rmarkdown
-* The [knitr documentation](http://yihui.name/knitr/demo/engines/) provides sample scripts for Python, Awk, Ruby, Haskell, Bash, Perl, Graphviz, TikZ, SAS, Scala, and CoffeeScript
+* The [knitr documentation](http://yihui.name/knitr/demo/engines/) provides sample scripts for Python, SAS, Scala, Haskell, Scala etc.
 * The "literate" idea is powerful, general, and scalable
 
+<!--
 
+### Disadvantages
+
+* None
+* There is a myth that you have to program to use R but not to use Excel:
+    * Excel: 
+        * In cell A1: `=normsinv(rand())`
+        * In cell A2: `=exp(A1)`
+    * R:
+        * `z = rnorm(1)`
+        * `exp(z)`
+
+-->
 ## Example: Simulation 
 
 * Suppose we want to explain quasi-random number generation, and the link between uniform, normal, and lognormal random numbers.
-* It's important to provide examples
+
 * We draw uniform quasi-random numbers, transform those into normal random numbers, and then transform those into lognormal random numbers.
 * We want to 
     * show the code
@@ -120,12 +188,12 @@ $$y = e^{z}$$
 
 ## Elaboration
 
-* Here is an explanation of the code. Note that it is vectorized; there are no explicit loops
+* Note that the code is vectorized; there are no explicit loops
 * `set.seed()` is used to start the random number process at a specified value. 
 * `runif()` is R's uniform random number generator. The first value produced is `r u[1]`
 * We then run ` `r paste0('qnorm(', format(u[1], digits=8), ')')`` to produce the normal value `r z[1]`
 * Finally, ``r paste0('exp(', format(z[1], digits=8),')')`` produces the lognormal value `r y[1]`
-
+* If you look at [the code for this document]() on github, everything is there
 
 ## Code
 
@@ -201,12 +269,24 @@ vol <- tapply(x$ret, x$year, sd)*sqrt(252)
 
 ## Analysis of Apple Since 2000
 
-```{r}
+```{r aaplplots, echo=FALSE}
 par(mfrow=c(2,2))
 plot(x$Date, x$ret, type='l', main="Daily Returns")
 plot(x$Date, x$ret^2, type='l', main="Squared Daily Returns")
 plot(names(vol), vol, main="Annual Historical Volatility")
 qqnorm(x$ret, main="Is Apple Normally Distributed?")
+```
+
+## ?
+
+How much code was required to produce the previous page?
+
+
+## Code for the Plots
+
+5 lines:
+
+```{r, ref.label="aaplplots", eval=FALSE, echo=TRUE}
 ```
 
 ## Code Chunk Options
@@ -221,8 +301,8 @@ qqnorm(x$ret, main="Is Apple Normally Distributed?")
 
 * Rmarkdown gives you a tremendously flexible tool for integrating code into your documents
 * Code integration gives you reproducibility
-* You can incorporate all calculations,  output, and explanations into a single document
+* You can incorporate both code and explanations for all calculations,  output, tables, and figures into a single document
 * You can decide whether or not to display the underlying code. (You can easily have a version of your document displaying all code, some, or none.)
 * RStudio provides great training wheels, and gives you  flexibility to choose your output format
-* We did not discuss the YAML header...
+
 

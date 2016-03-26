@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <p><p>
 
-The [source code for this document](https://github.com/rmcd1024/statlit/blob/master/litdoc_intro.Rmd) is available on github
+The [source code for this document](https://raw.githubusercontent.com/rmcd1024/statlit/master/litdoc_intro.Rmd) is available on github
 
 ## Reproducibility
 

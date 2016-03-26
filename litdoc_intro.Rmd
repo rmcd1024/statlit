@@ -93,19 +93,17 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 * Pandoc is a document conversion tool permitting conversion among markdown, HTML, pdf, docx, latex, etc.
 * I will demonstrate markdown $\to$ HTML in this talk 
     * The main ideas are the same when using LaTeX and markdown. The chunk  syntax is slightly different and of course LaTeX $\ne$ markdown
-
   
-
 ## Tools for Creating Literate Documents
 
 * I will be using R with RStudio in my examples
 * You need not use RStudio; you can use _any_ text editor --- Vim, Emacs, Sublime Text, TextMate, Notepad++, etc.
-    * It is worthwhile to become an expert user of a capable text editor
+    * A great text editor is a wonderful tool
     * The best tools are editor-agnostic
 * You can use  programming languages other than R
     * I will present a python example later
+    * You can also do this with [Stata](http://www.ssc.wisc.edu/~hemken/Stataworkshops/Stata%20and%20R%20Markdown/Stata.html) 
 * You will be much better off if you are comfortable at the command line
-    * It is a tool for a professional writer/researcher
     * If you don't know how to use the command line, learn!
 
 

@@ -1,11 +1,14 @@
 ---
 title: 'Statistically Literate Documents: Introduction'
 author: "Robert McDonald"
-date: "March 26, 2016"
+date: "`r format(Sys.Date(), format='%B %d, %Y')`"
 output: 
     ioslides_presentation:
         incremental: true
         transition: faster
+        toc: true
+bibliography: bib_example.bib
+
 #output:
 #    html_document:
 #        toc: true
@@ -29,6 +32,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 The [source code for this document](https://raw.githubusercontent.com/rmcd1024/statlit/master/litdoc_intro.Rmd) is available on github
 
+# Motivation
+
 ## Reproducibility
 
 * The research paradigm presumes honesty and verifiability
@@ -48,7 +53,8 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
     * make it easy for you to retrace your steps
     * make it easy to share your work process with others
     * are robust (e.g. files should still be readable a decade later)
-    
+* This talk is about tools
+
 ## Goals of this Talk
 
 * Stress the importance of reproducibility
@@ -58,6 +64,8 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 * The important thing is for you to use tools that 
     * you and coauthors are comfortable with
     * that support reproducibility
+
+# Statistical Literacy
 
 ## Code and Statistical "Literacy"  
 
@@ -96,7 +104,7 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
   
 ## Tools for Creating Literate Documents
 
-* I will be using R with RStudio in my examples
+* I will be using RStudio (with Pandoc) in my examples
 * You need not use RStudio; you can use _any_ text editor --- Vim, Emacs, Sublime Text, TextMate, Notepad++, etc.
     * A great text editor is a wonderful tool
     * The best tools are editor-agnostic
@@ -106,6 +114,7 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 * You will be much better off if you are comfortable at the command line
     * If you don't know how to use the command line, learn!
 
+# Examples
 
 ## Markdown Example
 
@@ -189,9 +198,9 @@ $$y = e^{z}$$
 * Note that the code is vectorized; there are no explicit loops
 * `set.seed()` is used to start the random number process at a specified value. 
 * `runif()` is R's uniform random number generator. The first value produced is `r u[1]`
-* We then run ` `r paste0('qnorm(', format(u[1], digits=8), ')')`` to produce the normal value `r z[1]`
+* We then run ` `r paste0('qnorm(', format(u[1], digits=8), ')')`` to produce the normal value `r z[1]` (`rnorm()` does this directly)
 * Finally, ``r paste0('exp(', format(z[1], digits=8),')')`` produces the lognormal value `r y[1]`
-* If you look at [the code for this document]() on github, everything is there
+* If you look at [the code for this document](https://raw.githubusercontent.com/rmcd1024/statlit/master/litdoc_intro.Rmd) on github, everything is there
 
 ## Code
 
@@ -287,6 +296,8 @@ How much code was required to produce the previous page?
 ```{r, ref.label="aaplplots", eval=FALSE, echo=TRUE}
 ```
 
+* (In case you're wondering about the outlier in the plots, Apple dropped from $53.50 to $25.75 on September 29, 2000.)
+
 ## Code Chunk Options
 
 * When you add code (in a "chunk"), you can always decide whether to display the code (some or all of it), whether to execute it, whether to display the output, whether the font is large or small, etc.
@@ -302,5 +313,9 @@ How much code was required to produce the previous page?
 * You can incorporate both code and explanations for all calculations,  output, tables, and figures into a single document
 * You can decide whether or not to display the underlying code. (You can easily have a version of your document displaying all code, some, or none.)
 * RStudio provides great training wheels, and gives you  flexibility to choose your output format
+* You can have references, for example @mcdonald/paulson:15, @wickham:14-ar, @wickham:15-rpkg, and @brennan/mcdonald:15-taxnotes
 
 
+# References
+
+## Bibliography

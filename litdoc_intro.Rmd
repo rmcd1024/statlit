@@ -1,26 +1,27 @@
 ---
 title: 'Statistically Literate Documents: Introduction'
 author: "Robert McDonald"
-date: "`r format(Sys.Date(), format='%B %d, %Y')`"
-output: 
-    ioslides_presentation:
-        incremental: true
-        transition: faster
-        toc: true
+date: '`r format(Sys.Date(), format="%B %d, %Y")`'
+output:
+  ioslides_presentation:
+    incremental: yes
+    toc: yes
+    transition: faster
+  beamer_presentation:
+    incremental: yes
+  slidy_presentation:
+    incremental: yes
 bibliography: bib_example.bib
-
-#output:
-#    html_document:
-#        toc: true
-#        toc_float: true
 ---
 
 <!-- 
 --->
 
 ```{r setup, include=FALSE}
+rm(list=ls())
 library(knitr)
 library(xtable)
+options(digits=5)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -37,13 +38,11 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 ## Reproducibility
 
 * The research paradigm presumes honesty and verifiability
-* Nevertheless there is a "reproducibility crisis"
-* Research must withstand scrutiny
     * Data should be made available (if possible)
     * All transformations, omissions, modifications, calculations, etc. should be clearly documented
     * Citations should be complete and accurate
 * How would your respond to a scholarly request for details about your work?
-* How would you respond to a fraud allegation?   
+* How would you respond to a fraud allegation? 
 
 ## Reproducibility is a Habit
 
@@ -55,6 +54,18 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
     * are robust (e.g. files should still be readable a decade later)
 * This talk is about tools
 
+<!--
+## Kellogg Research Support is trying to help...
+
+* [Kellogg Dataverse](https://ksmr06.kellogg.northwestern.edu) archive now available 
+    * Permits archiving and sharing of datasets
+    * You control permissions
+    * Can privately share with coauthors
+* [Kellogg Gitlab server](https://ksmr05.kellogg.northwestern.edu)  now available
+    * Can have private git account with sharing
+    * Commercial git server either charge for private accounts or charge for teams over a certain size
+-->
+
 ## Goals of this Talk
 
 * Stress the importance of reproducibility
@@ -63,11 +74,11 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 * Put in a plug (implicit) for those tools
 * The important thing is for you to use tools that 
     * you and coauthors are comfortable with
-    * that support reproducibility
+    * support reproducibility
 
 # Statistical Literacy
 
-## Code and Statistical "Literacy"  
+## Code and Statistical "Literacy"
 
 * The basic idea of literate documents was developed in the early 1980's by [Donald Knuth](http://www-cs-faculty.stanford.edu/~uno/) in the context of writing and documenting computer programs
 * The resurgence of interest has been accompanied by several developments:
@@ -94,20 +105,19 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 ## Creating Literate Documents
 
 * Two common paths:
-    * [Markdown](https://daringfireball.net/projects/markdown/) plus [Pandoc](http://pandoc.org/)
-    * LaTeX and R (with the knitr package). 
+    * [Markdown](https://daringfireball.net/projects/markdown/)/[RMarkdown](http://rmarkdown.rstudio.com/) plus [Pandoc](http://pandoc.org/)
+    * LaTeX and R 
 * A markdown document is a simple, readable text file that can be processed to yield nicely formatted output
-    * These slides are written in Rmarkdown
+    * These slides are written in Rmarkdown and processed with knitr and pandoc
 * Pandoc is a document conversion tool permitting conversion among markdown, HTML, pdf, docx, latex, etc.
 * I will demonstrate markdown $\to$ HTML in this talk 
-    * The main ideas are the same when using LaTeX and markdown. The chunk  syntax is slightly different and of course LaTeX $\ne$ markdown
+    * The main ideas are the same when using LaTeX and markdown. The chunk  syntax is slightly different.
   
 ## Tools for Creating Literate Documents
 
-* I will be using RStudio (with Pandoc) in my examples
+* RStudio includes Pandoc and makes the process easy
 * You need not use RStudio; you can use _any_ text editor --- Vim, Emacs, Sublime Text, TextMate, Notepad++, etc.
-    * A great text editor is a wonderful tool
-    * The best tools are editor-agnostic
+    * Pick a text editor and learn how to use it.
 * You can use  programming languages other than R
     * I will present a python example later
     * You can also do this with [Stata](http://www.ssc.wisc.edu/~hemken/Stataworkshops/Stata%20and%20R%20Markdown/Stata.html) 
@@ -118,15 +128,14 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 
 ## Markdown Example
 
-
 These are the first few lines of an earlier slide:
 
 ```
 ## Creating Literate Documents
 
 * Two common paths:
-    * [Markdown](https://daringfireball.net/projects/markdown/) plus [Pandoc](http://pandoc.org/)
-    * LaTeX and R (with the knitr package). 
+    * [Markdown](https://daringfireball.net/projects/markdown/)/[RMarkdown](http://rmarkdown.rstudio.com/) plus [Pandoc](http://pandoc.org/)
+    * LaTeX and R 
 * A markdown document is a simple, readable text file that can be processed to yield nicely formatted output
 
 ```
@@ -199,7 +208,7 @@ $$y = e^{z}$$
 * `set.seed()` is used to start the random number process at a specified value. 
 * `runif()` is R's uniform random number generator. The first value produced is `r u[1]`
 * We then run ` `r paste0('qnorm(', format(u[1], digits=8), ')')`` to produce the normal value `r z[1]` (`rnorm()` does this directly)
-* Finally, ``r paste0('exp(', format(z[1], digits=8),')')`` produces the lognormal value `r y[1]`
+* Finally, ``r paste0('exp(', format(z[1], digits=8),')')`` produces the lognormal value `r y[1]` (`rlnorm()` does this directly)
 * If you look at [the code for this document](https://raw.githubusercontent.com/rmcd1024/statlit/master/litdoc_intro.Rmd) on github, everything is there
 
 ## Code
@@ -214,7 +223,7 @@ Here are the first `r m` lines of output:
 
 It is helpful to present histograms for each distribution:
 
-```{r randplots, eval=FALSE, echo=TRUE}
+```{r randplots, eval=FALSE, echo=TRUE, fig.cap='From uniform to normal to lognormal...'}
 par(mfrow=c(2,2))     ## do a 2x2 grid, row priority
 ## uniform histogram with distribution function
 hist(u, main='Uniform', freq=FALSE)   
@@ -255,9 +264,9 @@ greet('Bob')
 ## Data
 
 
-```{r stkplot, cache=TRUE, echo=TRUE}
+```{r stkplot, cache=FALSE, echo=TRUE}
 dl <- FALSE
-if (dl) {
+if (dl | !file.exists('aapl.csv')) {
     url <- 'http://real-chart.finance.yahoo.com/table.csv?s=AAPL'
     x <- read.csv(url, stringsAsFactors=FALSE)
     write.csv(x, file='aapl.csv')
@@ -270,7 +279,7 @@ x$year <- as.POSIXlt(x$Date)$year + 1900
 vol <- tapply(x$ret, x$year, sd)*sqrt(252)
 ```
 
-* Presentations can have up-to-date data
+* Presentations can have up-to-date data (latest: `r max(x$Date)`)
 
 * This code downloads Apple data from Yahoo or reads from a file depending on whether `dl` is `TRUE` or `FALSE`
 
@@ -313,7 +322,7 @@ How much code was required to produce the previous page?
 * You can incorporate both code and explanations for all calculations,  output, tables, and figures into a single document
 * You can decide whether or not to display the underlying code. (You can easily have a version of your document displaying all code, some, or none.)
 * RStudio provides great training wheels, and gives you  flexibility to choose your output format
-* You can have references, for example @mcdonald/paulson:15, @wickham:14-ar, @wickham:15-rpkg, and @brennan/mcdonald:15-taxnotes
+* You can have references, for example @taibbi:11, @mcdonald/paulson:15, @wickham:14-ar, @wickham:15-rpkg, and @brennan/mcdonald:15-taxnotes
 
 
 # References

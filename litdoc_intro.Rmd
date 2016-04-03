@@ -71,10 +71,10 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 * Stress the importance of reproducibility
 * Provide an example of reproducibility (these slides)
 * Provide a roadmap through a particular set of tools
-* Put in a plug (implicit) for those tools
-* The important thing is for you to use tools that 
-    * you and coauthors are comfortable with
-    * support reproducibility
+* Put in a plug for those tools
+* The important thing is for you to use tools 
+    * with which you and coauthors are comfortable
+    * that support reproducibility
 
 # Statistical Literacy
 
@@ -96,7 +96,7 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
 
     * "Weaving" is the process of creating the human-readable document
 
-    * "Tangling" is the process of creating the compiler-readable document
+    * "Tangling" is the process of extracting the code so it can be compiled
 
 * A literate document can contain a complete record of all steps from the processing of raw data to publication.
     * A literate document is by definition "reproducible"
@@ -197,7 +197,7 @@ kable(cbind('Random Uniform'=u[1:m],    ## create the table
             'Implied Lognormal'=y[1:m]))
 ```
 
-This code generates `r format(n, big.mark=',')` uniform random variables ($u$), which are  converted to normal using the inverse probability transform and then to lognormal: 
+This code generates `r format(n, big.mark=',', scientific=FALSE)` uniform random variables ($u$), which are  converted to normal using the inverse probability transform and then to lognormal: 
 $$z = N^{-1}(u)$$
 $$y = e^{z}$$
 
@@ -307,6 +307,15 @@ How much code was required to produce the previous page?
 
 * (In case you're wondering about the outlier in the plots, Apple dropped from $53.50 to $25.75 on September 29, 2000.)
 
+## The point
+
+* The point of these examples is that creating high quality literate documents is no more work than what you are already doing, if you use the right tools
+    * Cutting and pasting is _never_ reproducible
+* You want to be able to create a zip file that
+    * can be extracted and run on someone elses's machine
+    * will still be readable and executable 20 years from now
+    
+    
 ## Code Chunk Options
 
 * When you add code (in a "chunk"), you can always decide whether to display the code (some or all of it), whether to execute it, whether to display the output, whether the font is large or small, etc.

@@ -14,9 +14,6 @@ output:
 bibliography: bib_example.bib
 ---
 
-<!-- 
---->
-
 ```{r setup, include=FALSE}
 rm(list=ls())
 library(knitr)
@@ -54,17 +51,6 @@ The [source code for this document](https://raw.githubusercontent.com/rmcd1024/s
     * are robust (e.g. files should still be readable a decade later)
 * This talk is about tools
 
-<!--
-## Kellogg Research Support is trying to help...
-
-* [Kellogg Dataverse](https://ksmr06.kellogg.northwestern.edu) archive now available 
-    * Permits archiving and sharing of datasets
-    * You control permissions
-    * Can privately share with coauthors
-* [Kellogg Gitlab server](https://ksmr05.kellogg.northwestern.edu)  now available
-    * Can have private git account with sharing
-    * Commercial git server either charge for private accounts or charge for teams over a certain size
--->
 
 ## Goals of this Talk
 
@@ -145,13 +131,10 @@ These are the first few lines of an earlier slide:
 * Use `[]()` to create hyperlinks 
  
     
-## R {.tabset}
+## R 
 
 Existing literate systems can accommodate a wide variety of programming and statistical languages; my examples will use R
 
-<!--
-### Advantages
--->
 
 * R is free, open source, and extraordinarily capable
 * There is much development around R with regard to literate documents (e.g., see [RMarkdown](http://rmarkdown.rstudio.com/))
@@ -159,20 +142,7 @@ Existing literate systems can accommodate a wide variety of programming and stat
 * The [knitr documentation](http://yihui.name/knitr/demo/engines/) provides sample scripts for Python, SAS, Scala, Haskell, Scala etc.
 * The "literate" idea is powerful, general, and scalable
 
-<!--
 
-### Disadvantages
-
-* None
-* There is a myth that you have to program to use R but not to use Excel:
-    * Excel: 
-        * In cell A1: `=normsinv(rand())`
-        * In cell A2: `=exp(A1)`
-    * R:
-        * `z = rnorm(1)`
-        * `exp(z)`
-
--->
 ## Example: Simulation 
 
 * Suppose we want to explain quasi-random number generation, and the link between uniform, normal, and lognormal random numbers.
@@ -324,6 +294,28 @@ How much code was required to produce the previous page?
 * You can control the size of graphics
 * There are numerous [chunk options](http://yihui.name/knitr/options/)
 
+## Bibliographic references
+
+You can store citation information in bibtex format:
+
+```
+@Book{taibbi:11,
+  author = 	 {Matt Taibbi},
+  title = 	 {Griftopia},
+  publisher = 	 {Random House},
+  year = 	 2011
+}
+```
+
+* RMarkdown supports bibliographic references (using pandoc-citeproc)
+
+* This citation: `@taibbi:11`, produces @taibbi:11
+
+* More examples (see bib_example.bib): @mcdonald/paulson:15,
+  @wickham:14-ar, @wickham:15-rpkg, and @brennan/mcdonald:15-taxnotes
+
+
+
 ## Conclusion
 
 * Rmarkdown gives you a tremendously flexible tool for integrating code into your documents
@@ -331,7 +323,6 @@ How much code was required to produce the previous page?
 * You can incorporate both code and explanations for all calculations,  output, tables, and figures into a single document
 * You can decide whether or not to display the underlying code. (You can easily have a version of your document displaying all code, some, or none.)
 * RStudio provides great training wheels, and gives you  flexibility to choose your output format
-* You can have references, for example @taibbi:11, @mcdonald/paulson:15, @wickham:14-ar, @wickham:15-rpkg, and @brennan/mcdonald:15-taxnotes
 
 
 # References
